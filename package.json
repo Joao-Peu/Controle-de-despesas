@@ -1,0 +1,21 @@
+{
+  "name": "controle-de-despesas",
+  "version": "1.0.0",
+  "description": "Um sistema de controle de despesas",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoaoMiguell/Controle-de-despesas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoaoMiguell/Controle-de-despesas/issues"
+  },
+  "homepage": "https://github.com/JoaoMiguell/Controle-de-despesas#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1"
+  }
+}
