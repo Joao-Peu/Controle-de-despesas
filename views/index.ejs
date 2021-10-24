@@ -28,7 +28,22 @@
 
             <h3>Transações</h3>
 
-            <ul id="transactions" class="transactions"></ul>
+            <ul id="transactions" class="transactions">
+                <% allTransactions.forEach(transaction => { %>
+                    <li class="
+                        <% if (transaction.amount >= 0) { %>
+                            plus
+                        <% } else { %>
+                            minus
+                        <% } %>">
+                        <%= transaction.name %>
+                        <span>+ R$ <%= transaction.amount%> </span>
+                        <button class="delete-btn" onclick="removeTransaction()">
+                        x
+                        </button>
+                    </li>
+                <% }) %>
+            </ul>
 
             <h3>Adicionar transação</h3>
 
@@ -41,6 +56,7 @@
                         id="text"
                         name="nameTransaction"
                         placeholder="Nome da transação"
+                        value="<%= name %>"
                     />
                 </div>
 
@@ -56,9 +72,10 @@
                         id="amount"
                         name="valueTransaction"
                         placeholder="Valor da transação"
+                        value="<%= value %>"
                     />
                 </div>
-
+                <span style="font-weight: bold;color: red;"><%= errorMsg %> </span>
                 <button class="btn">Adicionar</button>
             </form>
         </div>
