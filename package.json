@@ -7,13 +7,12 @@
     "type": "git",
     "url": "git+https://github.com/JoaoMiguell/Controle-de-despesas.git"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Joao-Peu",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JoaoMiguell/Controle-de-despesas/issues"
+    "url": "https://github.com/Joao-Peu/Controle-de-despesas/issues"
   },
-  "homepage": "https://github.com/JoaoMiguell/Controle-de-despesas#readme",
+  "homepage": "https://github.com/Joao-Peu/Controle-de-despesas#readme",
   "dependencies": {
     "cookie-parser": "^1.4.5",
     "ejs": "^3.1.6",
