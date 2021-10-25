@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/style.css" />
+        <title>Controle de despesas</title>
+    </head>
+    <body>
+        <h2>Controle de despesas</h2>
+
+        <div class="container">
+            <h4>Saldo atual</h4>
+
+            <h1 id="balance" class="balance">R$ <%= balance %>.00</h1>
+
+            <div class="inc-exp-container">
+                <div>
+                    <h4>Receitas</h4>
+                    <p id="money-plus" class="money plus">+ R$<%= sum %>.00</p>
+                </div>
+
+                <div>
+                    <h4>Despesas</h4>
+                    <p id="money-minus" class="money minus">- R$<%=subtraction%>.00</p>
+                </div>
+            </div>
+
+            <h3>Transações</h3>
+
+            <ul id="transactions" class="transactions">
+                <% allTransactions.forEach(transaction => { %>
+                    <li class="
+                        <% if (transaction.amount >= 0) { %>
+                            plus
+                        <% } else { %>
+                            minus
+                        <% } %>">
+                        <%= transaction.name %>
+                        <span>+ R$ <%= transaction.amount%> </span>
+                        <form action="/delete" method="post">
+                            <input type="hidden" name="id" value="<%= transaction.id %>">
+                            <button class="delete-btn" > x </button>
+                        </form>
+                    </li>
+                <% }) %>
+            </ul>
+
+            <h3>Adicionar transação</h3>
+
+            <form method="POST" action="/addTransaction" id="form">
+                <div class="form-control">
+                    <label for="text">Nome</label>
+                    <input
+                        autofocus
+                        type="text"
+                        id="text"
+                        name="nameTransaction"
+                        placeholder="Nome da transação"
+                        value="<%= name %>"
+                    />
+                </div>
+
+                <div class="form-control">
+                    <label for="amount"
+                        >Valor <br />
+                        <small
+                            >(negativo - despesas, positivo - receitas)</small
+                        >
+                    </label>
+                    <input
+                        type="number"
+                        id="amount"
+                        name="valueTransaction"
+                        placeholder="Valor da transação"
+                        value="<%= value %>"
+                    />
+                </div>
+                <span style="font-weight: bold;color: red;"><%= errorMsg %> </span>
+                <button class="btn">Adicionar</button>
+            </form>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
