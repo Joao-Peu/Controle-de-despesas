@@ -12,17 +12,17 @@
         <div class="container">
             <h4>Saldo atual</h4>
 
-            <h1 id="balance" class="balance">R$ 0.00</h1>
+            <h1 id="balance" class="balance">R$ <%= balance %>.00</h1>
 
             <div class="inc-exp-container">
                 <div>
                     <h4>Receitas</h4>
-                    <p id="money-plus" class="money plus">+ R$0.00</p>
+                    <p id="money-plus" class="money plus">+ R$<%= sum %>.00</p>
                 </div>
 
                 <div>
                     <h4>Despesas</h4>
-                    <p id="money-minus" class="money minus">- R$0.00</p>
+                    <p id="money-minus" class="money minus">- R$<%=subtraction%>.00</p>
                 </div>
             </div>
 
@@ -38,9 +38,10 @@
                         <% } %>">
                         <%= transaction.name %>
                         <span>+ R$ <%= transaction.amount%> </span>
-                        <button class="delete-btn" onclick="removeTransaction()">
-                        x
-                        </button>
+                        <form action="/delete" method="post">
+                            <input type="hidden" name="id" value="<%= transaction.id %>">
+                            <button class="delete-btn" > x </button>
+                        </form>
                     </li>
                 <% }) %>
             </ul>

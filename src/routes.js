@@ -22,9 +22,22 @@ router.get('/', (req, res) => {
         ]
     }).then(allTransactions => {
         var revenues = allTransactions
-        console.log(revenues);
+        var sum = 0
+        var subtraction = 0
+        var balance = 0
+        revenues.forEach(revenue => {
+            if (revenue.amount >= 0) {
+                sum += Number(revenue.amount)
+            } else {
+                subtraction -= revenue.amount
+            }
+        });
+        balance = sum - subtraction
         res.render('index',{
             allTransactions,
+            sum,
+            subtraction,
+            balance,
             errorMsg,
             name,
             value
@@ -36,5 +49,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/addTransaction', Transactions.AddTransaction)
+
+router.post('/delete', Transactions.RemoveTransaction)
 
 module.exports = router

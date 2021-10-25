@@ -14,6 +14,7 @@ class Transactions {
                     res.redirect('/')
                 }).catch(error => {
                     console.log(error);
+                    res.redirect('/')
                 })
             } else {
                 req.flash('value', amount)
@@ -27,6 +28,19 @@ class Transactions {
             res.redirect('/')
         }
         
+    }
+
+    static RemoveTransaction(req, res, next) {
+        var id = req.body.id
+
+        transactions.destroy({
+            where: {id: id}
+        }).then(() => {
+            res.redirect('/')
+        }).catch(error => {
+            console.log(error);
+            res.redirect('/')
+        })
     }
 }
 
